@@ -3,42 +3,23 @@ package com.freeapp.knigopoiskback.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity(name = "USERS")
-public class AppUser {
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long id;
-
-        public Long getId() {
-                return id;
-        }
-
-        public void setId(Long id) {
-                this.id = id;
-        }
-
-        public String getLogin() {
-                return login;
-        }
-
-        public void setLogin(String login) {
-                this.login = login;
-        }
-
-        public String getPassword() {
-                return password;
-        }
-
-        public void setPassword(String password) {
-                this.password = password;
-        }
-
+@Data
+@Entity(name = "users")
+public class AppUser extends BaseEntity {
         @Column(name = "login")
         private String login;
 
         @Column(name = "password")
         private String password;
 
+        @Column(name = "email")
+        private String email;
+
+        @ManyToMany(fetch = FetchType.EAGER)
+        @JoinTable(name = "user_roles", joinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "id") })
+        private List<Role> roles;
 }

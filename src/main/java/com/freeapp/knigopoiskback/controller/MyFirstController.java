@@ -1,5 +1,6 @@
 package com.freeapp.knigopoiskback.controller;
 
+import com.freeapp.knigopoiskback.entity.AppUser;
 import com.freeapp.knigopoiskback.repository.AppUserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

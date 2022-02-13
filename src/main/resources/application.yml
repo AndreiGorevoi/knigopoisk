@@ -4,6 +4,11 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: andrey
     password: andrey
+  flyway:
+    user: andrey
+    password: andrey
+    schemas: public
+    url: "jdbc:postgresql://localhost:5432/postgres"
 server:
   port: 8989
   jpa:
