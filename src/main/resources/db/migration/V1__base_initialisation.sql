@@ -2,7 +2,7 @@ CREATE TABLE USERS
 (
     ID            uuid primary key DEFAULT gen_random_uuid(),
     LOGIN         varchar(50)  not null unique,
-    PASSWORD      varchar(50)  not null unique,
+    PASSWORD      varchar(50)  not null,
     EMAIL         varchar(255) not null unique,
     DATE_CREATION date        default now(),
     DATE_UPDATING date        default now(),
