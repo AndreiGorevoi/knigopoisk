@@ -9,8 +9,8 @@ import java.util.List;
 @Entity(name = "roles")
 public class Role extends BaseEntity {
 
-        @Enumerated(EnumType.STRING)
         @Column(name = "name")
+        @Enumerated(value = EnumType.STRING)
         private TypeOfRoles name;
 
         @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)

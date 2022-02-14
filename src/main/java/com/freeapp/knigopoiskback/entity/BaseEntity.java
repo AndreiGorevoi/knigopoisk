@@ -1,6 +1,7 @@
 package com.freeapp.knigopoiskback.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,16 +12,17 @@ import java.util.UUID;
 public class BaseEntity {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue
         private UUID id;
 
-        @Column(name = "DATE_CREATION")
-        private Date dateCreation;
+        @Column(name = "date_creation")
+        private Date dateCreation = new Date();
 
-        @Column(name = "DATE_UPDATING")
-        private Date dateUpdating;
+        @Column(name = "date_updating")
+        private Date dateUpdating = new Date();
 
         @Column(name = "status")
         @Enumerated(value = EnumType.STRING)
-        private Status status;
+        @ColumnDefault(value = "ACTIVE")
+        private Status status = Status.ACTIVE;
 }
