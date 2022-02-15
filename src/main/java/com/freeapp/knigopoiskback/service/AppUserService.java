@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AppUserService {
-        AppUser getByLogin(String login);
-        AppUser getById(UUID id);
-        List<AppUser> getAll();
+        AppUser findByLogin(String login);
+        AppUser findById(UUID id);
+        List<AppUser> findAll();
         void save(AppUser user);
 }

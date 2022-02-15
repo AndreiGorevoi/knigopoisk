@@ -17,17 +17,17 @@ public class AppUserServiceImpl implements AppUserService {
         }
 
         @Override
-        public AppUser getByLogin(String login) {
+        public AppUser findByLogin(String login) {
                 return appUserRepository.findAppUserByLogin(login);
         }
 
         @Override
-        public AppUser getById(UUID id) {
+        public AppUser findById(UUID id) {
                 return appUserRepository.findById(id).orElse(null);
         }
 
         @Override
-        public List<AppUser> getAll() {
+        public List<AppUser> findAll() {
                 return appUserRepository.findAll();
         }
 

@@ -14,3 +14,9 @@ server:
   jpa:
     hibernate:
       ddl-auto: none
+
+
+jwt:
+  token:
+    secret: "myjwtkinopoisksecretkey"
+    expired: 3600000

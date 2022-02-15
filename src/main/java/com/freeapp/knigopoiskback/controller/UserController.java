@@ -29,7 +29,7 @@ public class UserController {
 
         @GetMapping(value = "/all")
         public ResponseEntity<List<AppUser>> getAll() {
-                return ResponseEntity.ok(appUserService.getAll());
+                return ResponseEntity.ok(appUserService.findAll());
         }
 
         @PostMapping(value = "/save")
