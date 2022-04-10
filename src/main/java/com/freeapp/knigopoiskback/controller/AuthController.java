@@ -4,7 +4,6 @@ import com.freeapp.knigopoiskback.dto.LoginData;
 import com.freeapp.knigopoiskback.entity.AppUser;
 import com.freeapp.knigopoiskback.security.jwt.JwtTokenProvider;
 import com.freeapp.knigopoiskback.service.AppUserService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
