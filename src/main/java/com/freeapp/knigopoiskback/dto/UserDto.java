@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-        private String login;
-        private String email;
-        private String status;
+  private String login;
+  private String email;
+  private String status;
 
-        public static UserDto fromUser(AppUser user) {
-                return new UserDto(user.getLogin(), user.getEmail(), user.getStatus().name());
-        }
+  public static UserDto fromUser(AppUser user) {
+    return new UserDto(user.getLogin(), user.getEmail(), user.getStatus().name());
+  }
 }
