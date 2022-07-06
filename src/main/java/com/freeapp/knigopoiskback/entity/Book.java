@@ -36,4 +36,9 @@ public class Book extends BaseEntity {
       @JoinColumn(name = "book_id", referencedColumnName = "id") }, inverseJoinColumns = {
       @JoinColumn(name = "author_id", referencedColumnName = "id") })
   private List<Author> authors;
+
+  @Override
+  public String toString() {
+    return "Book{" + "title='" + title + '\'' + ", description='" + description + '\'' + '}';
+  }
 }

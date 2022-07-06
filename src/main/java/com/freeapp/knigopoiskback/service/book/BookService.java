@@ -7,5 +7,6 @@ import java.util.UUID;
 
 public interface BookService {
   List<Book> getAll();
+  List<Book> getAllByGenre(String genre);
   Book getById(UUID id);
 }

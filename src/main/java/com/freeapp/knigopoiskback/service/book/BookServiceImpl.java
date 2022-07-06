@@ -26,6 +26,12 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  public List<Book> getAllByGenre(String genre) {
+    String capitalizedGenre = genre.substring(0,1).toUpperCase().concat(genre.substring(1));
+    return bookRepository.findBooksByGenre(capitalizedGenre);
+  }
+
+  @Override
   public Book getById(UUID id) {
     return bookRepository.getById(id);
   }
