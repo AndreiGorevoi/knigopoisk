@@ -1,0 +1,1 @@
+ALTER TABLE books add column owner_id uuid references users(id)

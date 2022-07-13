@@ -36,4 +36,9 @@ public class AppUser extends BaseEntity {
                 appUser.setPassword(passwordEncoder.encode(registrationData.getPassword()));
                 return appUser;
         }
+
+        @Override
+        public String toString() {
+                return "AppUser{" + "login='" + login + '\'' + ", email='" + email + '\'' + '}';
+        }
 }

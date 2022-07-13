@@ -1,17 +1,18 @@
 package com.freeapp.knigopoiskback.controller;
 
 import com.freeapp.knigopoiskback.entity.Book;
-import com.freeapp.knigopoiskback.repository.BookRepository;
 import com.freeapp.knigopoiskback.service.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,13 +25,10 @@ import java.util.UUID;
 public class BookController {
 
   private final BookService bookService;
-//  TODO: delete after testing
-  private final BookRepository bookRepository;
 
   @Autowired
-  public BookController(BookService bookService, BookRepository bookRepository) {
+  public BookController(BookService bookService) {
     this.bookService = bookService;
-    this.bookRepository = bookRepository;
   }
 
   @GetMapping(value = "/all")
@@ -38,13 +36,23 @@ public class BookController {
     return ResponseEntity.ok(bookService.getAll());
   }
 
-  @GetMapping(value = "/{genre}")
-  public ResponseEntity<List<Book>> getByGenre(@PathVariable String genre){
+  @GetMapping
+  public ResponseEntity<List<Book>> getByGenre(@RequestParam String genre) {
+    if(genre.equalsIgnoreCase("all")) return ResponseEntity.ok(bookService.getAll());
     return ResponseEntity.ok(bookService.getAllByGenre(genre));
   }
 
-  @GetMapping(value = "/:id")
-  public Book getById(@RequestParam UUID id) {
-    return bookService.getById(id);
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<Book> getById(@PathVariable UUID id) {
+    if (bookService.getById(id).isPresent()) {
+      return ResponseEntity.ok(bookService.getById(id).get());
+    }
+    return ResponseEntity.notFound().build();
+  }
+
+  @PatchMapping(value = "/{id}")
+  public ResponseEntity<Integer> patchById(@PathVariable UUID id, @RequestParam String newOwner){
+    bookService.updateBookById(id, newOwner);
+    return ResponseEntity.ok(HttpServletResponse.SC_OK);
   }
 }

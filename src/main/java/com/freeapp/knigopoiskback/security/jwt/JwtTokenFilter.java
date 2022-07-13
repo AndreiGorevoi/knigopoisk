@@ -31,7 +31,7 @@ public class JwtTokenFilter extends GenericFilterBean {
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Headers", "origin, content-type, accept, X-Auth-Token, authorization");
     response.setHeader("Access-Control-Allow-Credentials", "true");
-    response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+    response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD");
     String token = jwtTokenProvider.resolveToken(request);
     if (token != null && jwtTokenProvider.validateToken(token)) {
       Authentication authentication = jwtTokenProvider.getAuthentication(token);
