@@ -51,6 +51,7 @@ public class AuthController {
                         HashMap<Object, Object> response = new HashMap<>();
                         response.put("login", login);
                         response.put("token", token);
+                        response.put("roles", appUser.getRoles());
                         return ResponseEntity.ok(response);
                 } catch (AuthenticationException e) {
                         throw new BadCredentialsException("Invalid login or password");
